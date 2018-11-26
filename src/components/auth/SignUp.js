@@ -40,13 +40,20 @@ class SignUp extends Component {
     render() {
         const {auth, profile, authError} = this.props;
 
-        // Route Guard
-        if (auth.uid && (profile.role === 'school' || profile.schoolId)) {
-            return (<Redirect to="/"/>)
-        }
+        console.log(this.props);
 
-        if (profile.role !== 'school' && !profile.schoolId) {
-            return (<Redirect to="/choose-school"/>)
+        // Route Guard
+        if (!profile.isEmpty) {
+            if ((profile.role === 'teacher' || profile.role === 'guardian')) {
+                return (<Redirect to="/choose-school"/>);
+            }
+            if ((profile.role === 'teacher' || profile.role === 'guardian') && !profile.schoolId) {
+                return (<Redirect to="/choose-school"/>);
+            }
+
+            if (auth.uid) {
+                return (<Redirect to="/"/>);
+            }
         }
 
         return (

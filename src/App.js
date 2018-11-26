@@ -35,6 +35,7 @@ class App extends Component {
                                 <div className={auth.uid && (profile.role === 'school' || profile.schoolId) ? 'col-md-9' : 'col-md-12'}>
                                     <Switch>
                                         <Route exact path="/" component={Dashboard} />
+                                        <Route exact path="/dashboard" component={Dashboard} />
                                         <Route exact path="/choose-school" component={ChooseSchool} />
                                         <Route exact path="/signin" component={SignIn} />
                                         <Route exact path="/signup" component={SignUp} />

@@ -37,7 +37,22 @@ class ChooseSchool extends Component {
     render() {
         const {auth, profile, authError, schools} = this.props;
 
-        if (!auth.uid || profile.role === 'school' || profile.schoolId) { return (<Redirect to="/" />) }
+        console.log(this.props);
+
+        // Route Guard
+        if (!profile.isEmpty) {
+            if (!auth.uid) {
+                return (<Redirect to="/"/>);
+            }
+
+            if (profile.role === 'school') {
+                return (<Redirect to="/"/>);
+            }
+
+            if (profile.role !== 'school' && profile.schoolId) {
+                return (<Redirect to="/"/>);
+            }
+        }
 
         return (
             <section className="mx-min-15px" id="signin">
@@ -56,7 +71,8 @@ class ChooseSchool extends Component {
                                         <div className="form-group">
                                             <label htmlFor="id" className="text-muted small">Pilih Sekolah</label>
                                             <select name="id" id="id" className="form-control selectpicker"
-                                                    data-live-search="true" title="Tidak Ada yang Dipilih" onChange={this.handleChange}>
+                                                    data-live-search="true" title="Tidak Ada yang Dipilih"
+                                                    onChange={this.handleChange}>
                                                 {schools && schools.map((school) =>
                                                     <option value={school.id}
                                                             key={school.id}>{school.name}</option>
@@ -64,7 +80,8 @@ class ChooseSchool extends Component {
                                             </select>
                                         </div>
                                         <div className="form-group d-flex align-items-center mb-0">
-                                            {authError ? <span className="form-text text-danger small">{authError}</span> : ''}
+                                            {authError ?
+                                                <span className="form-text text-danger small">{authError}</span> : ''}
                                             <button className="btn btn-outline-secondary ml-auto">
                                                 Selanjutnya
                                             </button>
@@ -81,12 +98,12 @@ class ChooseSchool extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-      auth: state.firebase.auth,
-      profile: state.firebase.profile,
-      authError: state.auth.authError,
-      schools: state.firestore.ordered.users,
-  }
+    return {
+        auth: state.firebase.auth,
+        profile: state.firebase.profile,
+        authError: state.auth.authError,
+        schools: state.firestore.ordered.users,
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {

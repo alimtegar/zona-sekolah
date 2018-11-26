@@ -6,6 +6,7 @@ import {firestoreConnect} from 'react-redux-firebase';
 
 /* Components */
 import ProgressBar from '../ProgressBar';
+
 const ReviewItem = lazy(() => import('./ReviewItem'));
 
 const Reviews = ({auth, reviews}) => {
@@ -57,17 +58,30 @@ const mapStateToProps = (state) => {
 
     return {
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
         reviews: state.firestore.ordered.reviews,
     }
 };
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect((props) => [
-        {
-            collection: 'reviews',
-            where: [['senderId', '==', props.auth.uid ? props.auth.uid : '']],
-            // orderBy: ['createdAt', 'desc'],
-        },
-    ]),
+    firestoreConnect((props) => {
+        if (!props.profile.isEmpty && props.profile.role === 'guardian') {
+            return [
+                {
+                    collection: 'reviews',
+                    where: [['receiverId', '==', props.auth.uid ? props.auth.uid : '']],
+                    // orderBy: ['createdAt', 'desc'],
+                },
+            ];
+        }else{
+            return [
+                {
+                    collection: 'reviews',
+                    where: [['senderId', '==', props.auth.uid ? props.auth.uid : '']],
+                    // orderBy: ['createdAt', 'desc'],
+                },
+            ];
+        }
+    }),
 )(Reviews);
