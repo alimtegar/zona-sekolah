@@ -1,5 +1,5 @@
 import React, {lazy, Suspense} from 'react';
-import connect from "redux";
+import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
