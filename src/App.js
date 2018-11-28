@@ -20,7 +20,7 @@ class App extends Component {
         const {auth, profile} = this.props;
 
         const sideBar = auth.uid && (profile.role === 'school' || profile.schoolId) ? (
-        <div className="col-md-3">
+        <div className="col-md-3" id="sidebar-supported-content">
             <SideBar/>
         </div>) : null;
 

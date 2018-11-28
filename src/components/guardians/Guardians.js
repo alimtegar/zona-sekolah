@@ -25,7 +25,7 @@ const Guardians = ({auth, guardians}) => {
             <div className="guardian-list py-5 px-3 px-md-5">
                 <Suspense fallback={<ProgressBar/>}>
                     <div className="guardian-list-container rounded shadow">
-                        {guardians.map((guardian, key) => <GuardianItem guardian={guardian} key={key}/>)}
+                        {guardians && guardians.map((guardian, key) => <GuardianItem guardian={guardian} key={key}/>)}
                     </div>
                 </Suspense>
             </div>

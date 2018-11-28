@@ -141,7 +141,7 @@ class SignUp extends Component {
                                         </div>
                                         <div className="form-group d-flex align-items-center mb-0">
                                             {authError ?
-                                                <span className="form-text text-danger small">{authError}</span> : ''}
+                                                <span className="form-text text-danger small pr-2">{authError}</span> : ''}
                                             <button className="btn btn-outline-secondary ml-auto">
                                                 Daftar Sekarang
                                             </button>

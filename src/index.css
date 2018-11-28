@@ -2,9 +2,38 @@
 
 /* ====== Responsive ====== */
 @media only screen and (max-width: 768px) {
+    /* ====== Custom Classes ====== */
+    /* Button Floating */
+    .jumbotron .btn-floating {
+        margin: 0 1rem !important;
+    }
+
     /* ====== Sidebar ====== */
     #sidebar {
         width: 100% !important;
+    }
+
+    #sidebar:not(.show) {
+        left: calc(-100% - 15px) !important;
+    }
+
+    #sidebar.show {
+        left: 15px !important;
+    }
+
+    #sidebar-supported-content {
+        min-height: 0 !important;
+    }
+
+    /* ====== Navbar ===== */
+    #navbar .navbar-collapse {
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+    }
+
+    #navbar .navbar-nav li a.active::before {
+        height: 100% !important;
+        width: 3px !important;
     }
 }
 
@@ -309,6 +338,8 @@ button {
 }
 
 #navbar .navbar-nav .dropdown .dropdown-menu {
+    position: absolute;
+    z-index: 100;
     left: unset;
     right: 0;
 }
@@ -340,10 +371,11 @@ button {
 /* ====== Sidebar ====== */
 #sidebar {
     position: fixed;
-    z-index: 99;
+    z-index: 10;
     background: #444;
     width: 25%;
     height: 100%;
+    transition: 0.5s;
 }
 
 #sidebar .sidebar-profile {

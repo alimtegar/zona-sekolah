@@ -25,3 +25,13 @@ export const getRoleIcon = (role) => {
             return (<i className="fa fa-question"/>);
     }
 };
+
+export const toggleSidebar = () => {
+    const sideBar = document.querySelector('#sidebar');
+
+    if (sideBar.classList.contains('show')) {
+        sideBar.classList.remove('show')
+    } else {
+        sideBar.classList.add('show');
+    }
+};

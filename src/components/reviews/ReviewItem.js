@@ -12,7 +12,7 @@ const ReviewItem = ({review}) => {
     return (
         <div className="review-item card border-0 shadow mb-4 rounded">
             <div className="card-header d-flex bg-transparent p-4 ">
-                <button className="btn btn-secondary btn-circle mr-3 shadow">
+                <button className="btn btn-secondary btn-circle d-none d-md-block mr-3 shadow">
                     {getRoleIcon(review.senderRole)}
                 </button>
                 <div className="d-inline-flex flex-column y-min-3px">
@@ -27,7 +27,7 @@ const ReviewItem = ({review}) => {
                     
                 </div>
                 <div className="d-inline-flex"/>
-                <div className="d-inline-flex flex-column align-items-end y-min-3px">
+                <div className="d-inline-flex flex-column align-items-end text-right y-min-3px">
                     <h6 className="font-weight-bold mb-0">
                         {review.receiverName}
                     </h6>
@@ -35,7 +35,7 @@ const ReviewItem = ({review}) => {
                         {getTranslatedRole(review.receiverRole)}
                     </small>
                 </div>
-                <button className="btn btn-secondary btn-circle ml-3 shadow">
+                <button className="btn btn-secondary btn-circle d-none d-md-block ml-3 shadow">
                     {getRoleIcon(review.receiverRole)}
                 </button>
             </div>

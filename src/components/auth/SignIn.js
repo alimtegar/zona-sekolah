@@ -52,7 +52,7 @@ class SignIn extends Component {
                                             <input type="password" name="password" className="form-control" id="password" onChange={this.handleChange}/>
                                         </div>
                                         <div className="form-group d-flex align-items-center mb-0">
-                                            {authError ? <span className="form-text text-danger small">{authError}</span> : ''}
+                                            {authError ? <span className="form-text text-danger small mr-2">{authError}</span> : ''}
                                             <button className="btn btn-outline-secondary ml-auto">
                                                 Masuk Sekarang
                                             </button>
