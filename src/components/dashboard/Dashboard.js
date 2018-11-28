@@ -12,8 +12,11 @@ const Dashboard = ({auth, profile}) => {
         if (profile.role !== 'school' && !profile.schoolId) {
             return (<Redirect to="/choose-school"/>)
         }
+    }else{
+        if (!auth.uid) {
+            return (<Redirect to="/signin"/>)
+        }
     }
-
 
     const dashboardItems = [
         {
@@ -36,17 +39,17 @@ const Dashboard = ({auth, profile}) => {
     return (
         <section className="mx-min-15px" id="dashboard">
             <div className="jumbotron bg-primary mb-0">
-                <h6 className="font-weight-bold mb-0">
+                <h2 className="font-weight-bold">
                     Zona Sekolah
-                </h6>
+                </h2>
                 {/*<h2 className="font-weight-bold">*/}
                     {/*SMKN 2 Yogyakarta*/}
                 {/*</h2>*/}
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </div>
-            <div className="alert alert-success mb-0 p-4 border-0 rounded-0">
-                <strong>Lorem ipsum.</strong> Dolor sit amet, consectetur adipisicing elit. Vero, voluptates.
-            </div>
+            {/*<div className="alert alert-success mb-0 p-4 border-0 rounded-0">*/}
+                {/*<strong>Lorem ipsum.</strong> Dolor sit amet, consectetur adipisicing elit. Vero, voluptates.*/}
+            {/*</div>*/}
             <div className="dashboard-content py-5 px-3 px-md-5">
                 <div className="row">
                     <div className="col-md-12">

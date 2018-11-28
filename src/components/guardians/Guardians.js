@@ -1,11 +1,11 @@
 import React, {lazy, Suspense} from 'react';
-import connect from "react-redux/es/connect/connect";
-
-/* Components */
-import ProgressBar from '../ProgressBar';
+import connect from "react-redux";
 import {Redirect} from "react-router-dom";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
+
+/* Components */
+import ProgressBar from '../ProgressBar';
 const GuardianItem = lazy(() => import ('./GuardianItem'));
 
 const Guardians = ({auth, guardians}) => {

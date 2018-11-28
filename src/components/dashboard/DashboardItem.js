@@ -9,7 +9,7 @@ const DashboardItem = ({dashboardItem}) => {
                     {/*<i className={"fa fa-" + dashboardItem.icon} />*/}
                 {/*</button>*/}
             {/*</div>*/}
-            <div className="card-img-top d-flex justify-content-center align-items-center">
+            <div className="card-img-top d-flex justify-content-center align-items-center rounded-top">
                 <img src="https://image.freepik.com/free-vector/businessman-giving-five-star-rating-feedback_39663-59.jpg" alt={dashboardItem.title} className="img-fluid" />
             </div>
             <div className="card-body text-muted text-center p-4">

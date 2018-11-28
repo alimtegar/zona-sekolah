@@ -19,7 +19,7 @@ const NavBar = ({auth}) => {
             <Link className="navbar-brand" to="/">
                 <i className="fa fa-school mr-2"/>
                 Zona Sekolah
-                <sup>v3.1</sup>
+                <sup class="badge badge-pill badge-light text-primary x-small ml-2">v3.1</sup>
             </Link>
             {navBarToggler}
             {navBarNav}
